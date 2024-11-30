@@ -76,10 +76,13 @@ let transaction = await arweave.createTransaction({
 });
 
 // sign using arweave-js
-const signedFields = await window.arweaveWallet.sign(transaction);
+const signedTransaction = await window.arweaveWallet.sign(transaction);
 
-// update transaction fields with the
-// signed transaction's fields
+// TODO: post `signedTransaction` to the network or...
+
+// ...update the original transaction's fields with the signed transaction's
+// fields...
+
 transaction.setSignature({
   id: signedFields.id,
   owner: signedFields.owner,
@@ -88,5 +91,5 @@ transaction.setSignature({
   signature: signedFields.signature
 });
 
-// TODO: post the transaction to the network
+// TODO: ...and post `transaction` to the network
 ```
